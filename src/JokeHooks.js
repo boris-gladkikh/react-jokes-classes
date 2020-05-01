@@ -1,25 +1,29 @@
 import React, { useState, useEffect } from "react";
 import "./Joke.css";
 
-function JokeHooks({vote, votes, id, text}){
+function JokeHooks({joke, vote, votes, id, text, addToMyJokes }) {
 
 
- 
-  return(
+
+  return (
     <div className="Joke">
-        <div className="Joke-votearea">
-          <button onClick={()=>(vote(id, +1))}>
-            <i className="fas fa-thumbs-up" />
-          </button>
+      <div className="Joke-votearea">
+        <button onClick={() => (addToMyJokes(joke))}>
+          <i className="fas fa-heart" />
+        </button>
 
-          <button onClick={()=>(vote(id, -1))}>
-            <i className="fas fa-thumbs-down" />
-          </button>
-          {votes}
-        </div>
+        <button onClick={() => (vote(id, +1))}>
+          <i className="fas fa-thumbs-up" />
+        </button>
 
-        <div className="Joke-text">{text}</div>
+        <button onClick={() => (vote(id, -1))}>
+          <i className="fas fa-thumbs-down" />
+        </button>
+        {votes}
       </div>
+
+      <div className="Joke-text">{text}</div>
+    </div>
   )
 
 }
